@@ -29,9 +29,12 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
             String searchValue = searchTerm;
 
-            if (row.containsValue(searchValue)) {
+            String rowValues = row.toString();
+
+            if (rowValues.matches("(?i:.*" + searchValue +".*)")) {
                 jobsBySearch.add(row);
             }
+
 
         }
 
@@ -95,9 +98,11 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (aValue.matches("(?i:.*" + value +".*)")) {
                 jobs.add(row);
             }
+
+
         }
 
         return jobs;
